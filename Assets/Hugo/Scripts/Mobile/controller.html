@@ -90,7 +90,8 @@
 
 <body onload="Init();">
     
-    <p id="debug-text">Hello world</p>
+    <p id="status-text">Loading</p>
+
     <div id="keypad" class="keypad">
         <div class="keypad-row">
             <div class="keypad-number-key key-number-1"></div>
@@ -116,54 +117,53 @@
 </body>
 
 <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.4.0.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.0.slim.min.js"></script>
+
 <script>
     function Init() {
-        var DebugTxt = document.getElementById('debug-text');
+        var StatusText = document.getElementById('status-text');
         var Keys = document.getElementById('keypad').getElementsByClassName('keypad-number-key');
 
         var airconsole = new AirConsole({"orientation": "portrait"});
 
         airconsole.onMessage = function(from, data) {
-            DebugTxt.innerText += "new message from " + from + " data = " + JSON.stringify(data);
+            //StatusText.innerText += "<br>new message from " + from + " data = " + JSON.stringify(data);
         }
-        airconsole.onActivePlayersChange = function(player_number) {
-            DebugTxt.innerText += "New player connected";
-        }
+
         airconsole.onReady = function() {
-            DebugTxt.innerText += "Ready";
+            StatusText.innerText = "Connected!";
         }
         
         airconsole.onActivePlayersChange = function(PlayerId) {
             if (PlayerId == 0)
             {
                 // main character
+                StatusText.innerText = "You are scientist";
             }
             if (PlayerId == 1)
             {
                 // second character
+                StatusText.innerText = "You are NOT scientist"
             }
         }
         
-        Array.prototype.slice.call(Keys).forEach(function (Key, i) {
-            //console.log('binding key', i, Key);
+        Array.prototype.slice.call(Keys).forEach(function (Key, KeyId) {
+            function SendKeyDown(e) {
+                airconsole.message(AirConsole.SCREEN, { KeyDownEvent: { Key: KeyId } });
+                $(Key).addClass('keypad-number-key-pressed');
+                e.preventDefault();
+            }
 
-            Key.addEventListener('touchstart', function(e) {
-                airconsole.message(AirConsole.SCREEN, { KeyDownEvent: { Key: i } });
+            function SendKeyUp(e) {
+                airconsole.message(AirConsole.SCREEN, { KeyUpEvent: { Key: KeyId } });
+                $(Key).removeClass('keypad-number-key-pressed');
                 e.preventDefault();
-            });
+            }
 
-            Key.addEventListener('mousedown', function(e) {
-                airconsole.message(AirConsole.SCREEN, { KeyDownEvent: { Key: i } });
-                e.preventDefault();
-            });
-            Key.addEventListener('touchend', function(e) {
-                airconsole.message(AirConsole.SCREEN, { KeyUpEvent: { Key: i } });
-                e.preventDefault();
-            });
-            Key.addEventListener('mouseup', function(e) {
-                airconsole.message(AirConsole.SCREEN, { KeyUpEvent: { Key: i } });
-                e.preventDefault();
-            });
+            Key.addEventListener('touchstart', SendKeyDown);
+            Key.addEventListener('mousedown', SendKeyDown);
+            Key.addEventListener('touchend', SendKeyUp);
+            Key.addEventListener('mouseup', SendKeyUp);
         });
     }
 </script>
