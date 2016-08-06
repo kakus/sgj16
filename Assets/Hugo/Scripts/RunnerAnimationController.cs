@@ -35,7 +35,7 @@ public class RunnerAnimationController : MonoBehaviour {
             Slide = true;
             GetComponent<BoxCollider2D>().isTrigger = true;
             Anim.SetBool("Slide", Slide);
-            time = 35;
+            time = 25;
         }
         time--;
         if (time <= 0) {
