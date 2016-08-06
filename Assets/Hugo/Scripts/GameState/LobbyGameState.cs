@@ -10,7 +10,7 @@ public class LobbyGameState : AbstractGameState
     {
         ConnectedPlayers += 1;
 
-        if (ConnectedPlayers == 2)
+        if (ConnectedPlayers == 1)
         {
             GameStateManager.GetInstance().SwitchGameState(EGameState.PLAY_STATE);
         }
@@ -24,11 +24,11 @@ public class LobbyGameState : AbstractGameState
 
     public override void Shutdown()
     {
-        if (ConnectedPlayers != 2)
+        if (ConnectedPlayers != 1)
         {
             throw new System.Exception("Not enough players to playe the game!");
         }
-        AirConsole.instance.SetActivePlayers(2);
+        AirConsole.instance.SetActivePlayers(1);
     }
 
 }
