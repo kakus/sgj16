@@ -9,6 +9,7 @@
         .keypad-row {
             width: 100%;
             display: flex;
+            margin-bottom: 30px;
         }
 
         .keypad-number-key {
@@ -128,6 +129,12 @@
 
         airconsole.onMessage = function(from, data) {
             //StatusText.innerText += "<br>new message from " + from + " data = " + JSON.stringify(data);
+            if (data.Error)
+            {
+                StatusText.innerText = data.Error;
+                StatusText.style.color = 'red';
+                $('#keypad').hide();
+            }
         }
 
         airconsole.onReady = function() {

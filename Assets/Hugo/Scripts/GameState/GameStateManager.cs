@@ -10,12 +10,12 @@ public enum EGameState
 public class GameStateManager : MonoBehaviour
 {
 	public EGameState StartState;
+	public event System.Action<EGameState> OnGameStateChange;
 
 	private static GameStateManager Instance;
 	private AbstractGameState CurrentState;
 
-    // Use this for initialization
-    void Start()
+    void Awake()
     {
 		if (Instance == null)
 		{
@@ -54,6 +54,8 @@ public class GameStateManager : MonoBehaviour
 				CurrentState = new PlayState();
 				break;
 		}
+
+		if (OnGameStateChange != null) OnGameStateChange.Invoke(NewState);
     }
 
 	public AbstractGameState GetGameState()

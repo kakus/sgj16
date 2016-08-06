@@ -6,9 +6,8 @@ public class Spawner : MonoBehaviour {
 
     System.Random rnd = new System.Random();
     int SpawnChooser;
+    public int NumberOfBottles = 20;
     public float speed = -350;
-    public float spawnTime = 2f;
-    public float spawnDelay = 2f;     
     public GameObject enemy;
     public Rigidbody2D Bullet;
     public Transform SpawnPoint1;
@@ -17,11 +16,12 @@ public class Spawner : MonoBehaviour {
     // Use this for initialization
     public void Start()
     {
-        InvokeRepeating("Spawn", spawnDelay, spawnTime);
+        InvokeRepeating("Spawn", 3, 1.3f);
     }
 
     void Spawn()
     {
+        NumberOfBottles--;
         SpawnChooser = rnd.Next(1, 4);
         Rigidbody2D BulletInstance;
         switch (SpawnChooser)
@@ -38,6 +38,10 @@ public class Spawner : MonoBehaviour {
                 BulletInstance = Instantiate(Bullet, SpawnPoint3.position, SpawnPoint3.rotation) as Rigidbody2D;
                 BulletInstance.AddForce(new Vector2(speed, 0));
                 break;
+        }
+        if (NumberOfBottles <= 0)
+        {
+            CancelInvoke("Spawn");
         }
     }
 }
