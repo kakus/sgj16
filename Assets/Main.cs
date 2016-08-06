@@ -40,7 +40,16 @@ public class Main : MonoBehaviour {
     void Start () {
         score = 0;
         health = 3;
-        tunnelNum = 0;
+        //Main.tunnelSpeed = 40;
+
+    lastObPosZ = 0;
+    lastMedalPosZ = 0;
+    lastMedalPosX = 0;
+    lastMedalSerieNum = 5;
+    lastObPosX = 0;
+    tunnelSpeed = 40f;
+
+        tunnelSpeed = 0;
         createdObstacles = new List<GameObject>();
         createdMedals = new List<GameObject>();
         explosionParts = new List<GameObject>();

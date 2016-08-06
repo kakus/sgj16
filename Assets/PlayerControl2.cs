@@ -9,11 +9,13 @@ public class PlayerControl2 : MonoBehaviour {
     public bool destMode=true;
     public int trackPos=0;
     public bool wasPressed = false;
+    public static float lastHitTime = -5;
     private Animator anim;
 
 
     // Use this for initialization
     void Start () {
+        lastHitTime = -5;
         speed = new Vector3(0, 0, 10000f);
         anim = GetComponentInChildren<Animator>();
 
@@ -82,8 +84,27 @@ public class PlayerControl2 : MonoBehaviour {
         {
             destMode = true;
         }
-            //GetComponent<Rigidbody>().velocity = speed;
-            GetComponent<Rigidbody>().AddForce(speed);
+
+        if (Time.time - lastHitTime < 2)
+        {
+
+            Renderer rndr = gameObject.GetComponentsInChildren<Renderer>()[1];
+
+            Color c = Color.white;
+            c.a = 0.5f * (1+Mathf.Abs(Mathf.Sin((Time.time - lastHitTime)*20)));
+            rndr.material.color = c;
+
+        }
+        else
+        {
+            Renderer rndr = gameObject.GetComponentsInChildren<Renderer>()[1];
+
+            Color c = Color.white;
+            c.a = 1;
+            rndr.material.color = c;
+        }
+        //GetComponent<Rigidbody>().velocity = speed;
+        GetComponent<Rigidbody>().AddForce(speed);
         /*if (Input.GetKeyDown(KeyCode.LeftArrow))
             speed.x = -100;
 
