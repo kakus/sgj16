@@ -133,6 +133,17 @@
             DebugTxt.innerText += "Ready";
         }
         
+        airconsole.onActivePlayersChange = function(PlayerId) {
+            if (PlayerId == 0)
+            {
+                // main character
+            }
+            if (PlayerId == 1)
+            {
+                // second character
+            }
+        }
+        
         Array.prototype.slice.call(Keys).forEach(function (Key, i) {
             //console.log('binding key', i, Key);
 
