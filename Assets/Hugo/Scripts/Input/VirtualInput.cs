@@ -135,6 +135,7 @@ public class PlayerOneVirtualInput : AbstractVirtualInputState, IVirtualInput
         {
             switch (Button)
             {
+				case EHugoButton.Key_1: return Input.GetKeyDown(KeyCode.Alpha1);
                 case EHugoButton.Key_4: return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
                 case EHugoButton.Key_6: return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
                 case EHugoButton.Key_2: return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
