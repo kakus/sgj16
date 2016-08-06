@@ -23,10 +23,10 @@ public class PlayerHitBehavior : MonoBehaviour
     void Start()
     {
 
-        /*anim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();
 
-        anim.SetFloat("IsWin", 0);
-        anim.SetFloat("IsLost", 0);*/
+        anim.SetInteger("IsWin", 0);
+        anim.SetInteger("IsLost", 0);
         musicAS.Play();
     }
 
@@ -65,10 +65,12 @@ public class PlayerHitBehavior : MonoBehaviour
                 healthLabel.GetComponent<Text>().text = "" + Main.health.ToString() + "/3";
                 if (Main.health <= 0)
                 {
-                    Application.LoadLevel("End3DLevelScene");
-                    levelFailAS.Play();
+                    Application.LoadLevel("Scene3");
+                    //levelFailAS.Play();
 
-                    //anim.SetFloat("IsLost", 1);
+                    //anim.SetInteger("IsLost", 1);
+                    if (Main.outroStartTime == 0)
+                        Main.outroStartTime = Time.time + 3.0f;
                 }
                 else
                 {
@@ -92,9 +94,13 @@ public class PlayerHitBehavior : MonoBehaviour
 
                 if (Main.score == 99)
                 {
-                    levelWinAS.Play();
+                    //levelWinAS.Play();
 
-                    //anim.SetFloat("IsWin", 1);
+                    if (Main.outroStartTime == 0)
+                    {
+                        Main.outroStartTime = Time.time + 3.0f;
+                        GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    }
                 }
                 
 
