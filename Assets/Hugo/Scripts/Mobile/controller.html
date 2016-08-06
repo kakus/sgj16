@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: red;
+        }
+
+        .keypad-row {
+            padding: 10px;
+        }
+
+        .keypad-number-key {
+            display: inline-block;
+            margin-right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: gray;
+        }
+
+        .keypad-number-key:last-child {
+            margin-right: 0px;
+        }
+
+        .keypad-number-key-pressed {
+            transform: translateY(2px);
+        }
+    </style>
+    
+</head>
+
+<body onload="Init();">
+    
+    <p id="debug-text">Hello world</p>
+    <div id="keypad" class="keypad">
+        <div class="keypad-row">
+            <div class="keypad-number-key key-number-1"></div>
+            <div class="keypad-number-key key-number-2"></div>
+            <div class="keypad-number-key key-number-3"></div>
+        </div>
+        <div class="keypad-row">
+            <div class="keypad-number-key key-number-4"></div>
+            <div class="keypad-number-key key-number-5"></div>
+            <div class="keypad-number-key key-number-6"></div>
+        </div>
+        <div class="keypad-row">
+            <div class="keypad-number-key key-number-7"></div>
+            <div class="keypad-number-key key-number-8"></div>
+            <div class="keypad-number-key key-number-9"></div>
+        </div>
+        <div class="keypad-row">
+            <div class="keypad-number-key key-number-star"></div>
+            <div class="keypad-number-key key-number-0"></div>
+            <div class="keypad-number-key key-number-hash"></div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.4.0.js"></script>
+<script>
+    function Init() {
+        var DebugTxt = document.getElementById('debug-text');
+        var Keys = document.getElementById('keypad').getElementsByClassName('keypad-number-key');
+
+        var airconsole = new AirConsole({"orientation": "portrait"});
+
+        airconsole.onMessage = function(from, data) {
+            DebugTxt.innerText += "new message from " + from + " data = " + JSON.stringify(data);
+        }
+        airconsole.onActivePlayersChange = function(player_number) {
+            DebugTxt.innerText += "New player connected";
+        }
+        airconsole.onReady = function() {
+            DebugTxt.innerText += "Ready";
+        }
+        
+        Array.prototype.slice.call(Keys).forEach(function (Key, i) {
+            //console.log('binding key', i, Key);
+
+            Key.addEventListener('touchstart', function(e) {
+                airconsole.message(AirConsole.SCREEN, { KeyDownEvent: { Key: i } });
+                e.preventDefault();
+            });
+
+            Key.addEventListener('mousedown', function(e) {
+                airconsole.message(AirConsole.SCREEN, { KeyDownEvent: { Key: i } });
+                e.preventDefault();
+            });
+            Key.addEventListener('touchend', function(e) {
+                airconsole.message(AirConsole.SCREEN, { KeyUpEvent: { Key: i } });
+                e.preventDefault();
+            });
+            Key.addEventListener('mouseup', function(e) {
+                airconsole.message(AirConsole.SCREEN, { KeyUpEvent: { Key: i } });
+                e.preventDefault();
+            });
+        });
+    }
+</script>
+
+</html>
