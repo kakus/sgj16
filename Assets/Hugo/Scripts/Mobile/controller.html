@@ -6,28 +6,27 @@
             background-color: #525252;
         }
 
-        .keypad {
-            width: 100%
-        }
-
         .keypad-row {
-            /*padding: 10px;*/
             width: 100%;
             display: flex;
         }
 
         .keypad-number-key {
             display: inline-block;
-            /*margin-right: 30px;*/
-            width: 100%;
-            height: 40px;
-
             flex: 1;
 
-            background-color: gray;
             background-size: 100%;
 
             image-rendering: pixelated;
+
+            position: relative;
+            width: 100%;
+        }
+
+        .keypad-number-key:before{
+            content: "";
+            display: block;
+            padding-top: 55%;  /* aspect ratio */
         }
 
         .keypad-number-key:last-child {
