@@ -8,6 +8,7 @@ public class PlayerControl2 : MonoBehaviour {
     public Vector3 destVec;
     public bool destMode=true;
     public int trackPos=0;
+    public bool wasPressed = false;
 
     // Use this for initialization
     void Start () {
@@ -25,7 +26,8 @@ public class PlayerControl2 : MonoBehaviour {
         else
             speed.z = 0;
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && trackPos>=0) {
+        //if ((Input.GetKeyDown(KeyCode.LeftArrow)|| HugoInput.GetInputForPlayer(0).IsButtonPressed(EHugoButton.Key_4) && trackPos>=0) {
+        if (HugoInput.GetInputForPlayer(0).IsButtonPressed(EHugoButton.Key_4) && trackPos>=0) {
             speed.x = -1.666666f * 100f;
             destMode = true;
             trackPos -= 1;
@@ -33,7 +35,8 @@ public class PlayerControl2 : MonoBehaviour {
             
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && trackPos <= 0) { 
+        //if (Input.GetKeyDown(KeyCode.RightArrow) && trackPos <= 0) {
+          if (HugoInput.GetInputForPlayer(0).IsButtonPressed(EHugoButton.Key_6) && trackPos <= 0) { 
             destMode = true;
             trackPos += 1;
             destVec.x = Main.tunnelParts[0].transform.position.x + 2.8f  + trackPos * 1.6666666f;

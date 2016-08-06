@@ -658,6 +658,7 @@ MonoBehaviour:
   destVec: {x: 0, y: 0, z: 0}
   destMode: 0
   trackPos: 0
+  wasPressed: 0
 --- !u!114 &765469534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,6 +815,75 @@ MonoBehaviour:
   - {fileID: 84142045}
   - {fileID: 289962110}
   - {fileID: 1941665009}
+--- !u!1 &881450796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 881450800}
+  - 114: {fileID: 881450799}
+  - 114: {fileID: 881450798}
+  - 114: {fileID: 881450797}
+  m_Layer: 0
+  m_Name: AirConsole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &881450797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 881450796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3595b21b2b5964b5cb7d51364985f4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &881450798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 881450796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f0daa46c75e4790ba4566dc3d2e3c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartState: 0
+  UseAirConsoleInput: 0
+--- !u!114 &881450799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 881450796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37d83ebce05ad74683fd3228dde9e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  browserStartMode: 0
+  controllerHtml: {fileID: 4900000, guid: 8ff1fad7a8e694c4fa171c6c3c49a92a, type: 3}
+  autoScaleCanvas: 1
+--- !u!4 &881450800
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 881450796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &1022641982
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +998,7 @@ MonoBehaviour:
   destVec: {x: 0, y: 0, z: 0}
   destMode: 0
   trackPos: 0
+  wasPressed: 0
 --- !u!1 &1233133284
 GameObject:
   m_ObjectHideFlags: 0
