@@ -1,12 +1,34 @@
 <html>
-   <head>
-<style>
-   body {
-      background-color: red;
-   }
-</style>
+
+<head>
+    <style>
+        body {
+            background-color: red;
+        }
+    </style>
+    
 </head>
-<body>
-   <p>Hello world</p>
+
+<body onload="Init()">
+    <p id="debug-text">Hello world</p>
 </body>
+<script type="text/javascript"
+            src="https://www.airconsole.com/api/airconsole-1.4.0.js"></script>
+<script>
+    function Init() {
+        var DebugTxt = document.getElementById('debug-text');
+
+        var airconsole = new AirConsole({"orientation": "portrait"});
+        airconsole.onMessage = function(from, data) {
+            DebugTxt.innerText += "new message from " + from + " data = " + JSON.stringify(data);
+        }
+        airconsole.onActivePlayersChange = function(player_number) {
+            DebugTxt.innerText += "New player connected";
+        }
+        airconsole.onReady = function() {
+            DebugTxt.innerText += "Ready";
+        }
+    }
+</script>
+
 </html>

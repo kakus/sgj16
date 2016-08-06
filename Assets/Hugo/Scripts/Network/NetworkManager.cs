@@ -2,6 +2,7 @@
 using System.Collections;
 using NDream.AirConsole;
 using System;
+using Newtonsoft.Json.Linq;
 
 public class NetworkManager : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class NetworkManager : MonoBehaviour
     {
         AirConsole.instance.onConnect += OnPlayerConnect;
         AirConsole.instance.onDisconnect += OnPlayerDisconnect;
+		AirConsole.instance.onMessage += OnMessage;
+    }
+
+    private void OnMessage(int from, JToken data)
+    {
+		Debug.Log("message from player " + from + " data: " + data.ToString());
     }
 
     private void OnPlayerConnect(int device_id)
