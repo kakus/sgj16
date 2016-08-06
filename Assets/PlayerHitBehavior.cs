@@ -9,6 +9,12 @@ public class PlayerHitBehavior : MonoBehaviour
     public float upwardForce = 10;
     public float forwardForce = 10;
     public GameObject scoreLabel;
+    
+    public AudioSource runningAS;
+    public AudioSource hitAS;
+    public AudioSource coinAS;
+    public AudioSource musicAS;
+
     // Use this for initialization
     void Start()
     {
@@ -18,6 +24,10 @@ public class PlayerHitBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!runningAS.isPlaying)
+        {
+            runningAS.Play();
+        }
 
     }
     public void OnTriggerEnter(Collider other)
@@ -38,6 +48,8 @@ public class PlayerHitBehavior : MonoBehaviour
                 other.gameObject.GetComponent<Rigidbody>().AddForce(((Camera.main.transform.forward + randForward) * forwardForce + (Vector3.up + randUp) * upwardForce), ForceMode.Impulse);
                 other.gameObject.GetComponent<Rigidbody>().useGravity = true;
                 other.gameObject.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-300, 300), Random.Range(-300, 300), Random.Range(-300, 300)), ForceMode.Impulse);
+                
+                hitAS.Play();
             }
             if (other.tag == "Medal")
             {
@@ -50,6 +62,9 @@ public class PlayerHitBehavior : MonoBehaviour
                 other.gameObject.GetComponent<TweenPos>().targetv3 = Camera.main.transform.position + new Vector3(-2, 2.6f, 1.4f);
                 other.gameObject.GetComponent<TweenPos>().enabled = true;
                 other.gameObject.transform.parent = Camera.main.transform;
+
+                coinAS.Play();
+                
 
                 //GameObject scoreLabel = GameObject.FindGameObjectWithTag("ScoreLabel");
                 //scoreLabel.GetComponent<Text>().text = "MEDALE: 5";

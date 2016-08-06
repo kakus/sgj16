@@ -20,6 +20,7 @@ public class Main : MonoBehaviour {
     public static Vector3 speed;
     public static int tunnelNum;
     public static int score = 0;
+    public static int health = 0;
     public static float lastObPosZ=0;
     public static float lastMedalPosZ=0;
     public static float lastMedalPosX=0;
@@ -37,6 +38,8 @@ public class Main : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        score = 0;
+        health = 3;
         tunnelNum = 0;
         createdObstacles = new List<GameObject>();
         createdMedals = new List<GameObject>();
