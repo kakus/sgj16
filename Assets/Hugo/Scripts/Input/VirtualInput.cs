@@ -108,7 +108,7 @@ public class PlayerOneVirtualInput: AbstractVirtualInputState, IVirtualInput
     {
 		if (ButtonDown[Button])
 		{
-			return PressDuration[Button] < 0.02f;
+			return PressDuration[Button] < 0.01f;
 		}
 		return IsButtonDown(Button);
     }
@@ -150,7 +150,7 @@ public class PlayerTwoVirtualInput: AbstractVirtualInputState, IVirtualInput
     {
 		if (ButtonDown[Button])
 		{
-			return PressDuration[Button] < 0.02f;
+			return PressDuration[Button] < 0.01f;
 		}
 		return IsButtonDown(Button);
     }
