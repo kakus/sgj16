@@ -24,12 +24,12 @@ public class RunnerAnimationController : MonoBehaviour {
     }
     void Update()
     {
-        if (OnGround && HugoInput.GetInputForPlayer(0).IsButtonPressed(EHugoButton.Key_2) && !Slide)
+        if (OnGround && HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_2) && !Slide)
         {
             Anim.SetBool("Ground", false);
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, JumpForce));
         }
-        if (OnGround && HugoInput.GetInputForPlayer(0).IsButtonPressed(EHugoButton.Key_8))
+        if (OnGround && HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_8))
         {
             GetComponent<BoxCollider2D>().isTrigger = true;
             Slide = true;
