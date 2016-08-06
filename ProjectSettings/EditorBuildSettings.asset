@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Hugo/Scenes/Intro.unity
   - enabled: 1
     path: Assets/Hugo/Scenes/Scene2.unity
+  - enabled: 1
+    path: Assets/Hugo/Scenes/Scene1.unity
