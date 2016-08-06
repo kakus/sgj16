@@ -130,11 +130,9 @@ namespace NDream.AirConsole.Editor {
 			}
 		}
 
-		public static string GetLocalAddress () {
-		
-			//return "10.78.29.137";
-			//return "172.20.10.2";
-			return "localhost";
+		public static string GetLocalAddress ()
+		{
+			//return "localhost";
 			
 			string localIP = "";
   
