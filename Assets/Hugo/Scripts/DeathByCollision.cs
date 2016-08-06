@@ -3,13 +3,10 @@ using System.Collections;
 
 public class DeathByCollision : MonoBehaviour {
 
-    public int health = 1;
-    void OnCollisionEnter2D(Collision collision)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        health--;
+        if (col.gameObject.name == "Bullet(Clone)" || col.gameObject.name == "Character")
+            Destroy(col.gameObject);
     }
-    void Update() {
-        if (health <= 0)
-            Destroy(gameObject);
-    }
+
 }
