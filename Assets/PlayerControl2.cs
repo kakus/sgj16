@@ -9,10 +9,15 @@ public class PlayerControl2 : MonoBehaviour {
     public bool destMode=true;
     public int trackPos=0;
     public bool wasPressed = false;
+    private Animator anim;
+
 
     // Use this for initialization
     void Start () {
         speed = new Vector3(0, 0, 10000f);
+        anim = GetComponentInChildren<Animator>();
+
+        anim.SetFloat("animSpeed", 0);
         //gameObject.transform.position =new Vector3( Main.tunnelParts[0].transform.position.x + 2.5f, gameObject.transform.position.y, gameObject.transform.position.z);
 	}
 
@@ -32,7 +37,9 @@ public class PlayerControl2 : MonoBehaviour {
             destMode = true;
             trackPos -= 1;
             destVec.x = Main.tunnelParts[0].transform.position.x + 2.8f +trackPos* 1.6666666f;
-            
+
+            anim.SetFloat("animSpeed", 1);
+
         }
 
         //if (Input.GetKeyDown(KeyCode.RightArrow) && trackPos <= 0) {
@@ -40,7 +47,9 @@ public class PlayerControl2 : MonoBehaviour {
             destMode = true;
             trackPos += 1;
             destVec.x = Main.tunnelParts[0].transform.position.x + 2.8f  + trackPos * 1.6666666f;
-           
+
+            anim.SetFloat("animSpeed", 1);
+
         }
         if (destMode && (destVec.x<gameObject.transform.position.x))
         {
