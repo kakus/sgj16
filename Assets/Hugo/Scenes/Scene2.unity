@@ -104,9 +104,10 @@ GameObject:
   - 114: {fileID: 550257885}
   - 61: {fileID: 550257886}
   - 61: {fileID: 550257884}
-  m_Layer: 8
+  - 114: {fileID: 550257887}
+  m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +173,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_IsKinematic: 0
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -203,9 +204,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.12539959, y: -0.21317875}
+  m_Offset: {x: -0.06412125, y: -0.2131788}
   serializedVersion: 2
-  m_Size: {x: 0.35126245, y: 0.63364244}
+  m_Size: {x: 0.4738189, y: 0.63364244}
 --- !u!114 &550257885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +222,7 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 4294967039
-  JumpForce: 300
+  JumpForce: 450
   time: 0
 --- !u!61 &550257886
 BoxCollider2D:
@@ -234,9 +235,21 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.012998104, y: 0.292629}
+  m_Offset: {x: -0.016028404, y: 0.1926485}
   serializedVersion: 2
-  m_Size: {x: 0.40233672, y: 0.45396423}
+  m_Size: {x: 0.34428367, y: 0.25400323}
+--- !u!114 &550257887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 550257879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217bef4dc68e7024cab3ebf18485cf21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1 &565613378
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +259,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 565613380}
   - 68: {fileID: 565613379}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Character Footing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +338,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 54920926df12d14458dee99deb6975ed, type: 2}
+  - {fileID: 2100000, guid: 6c6e282e179889546b2ce0f81a395285, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -367,8 +380,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 627636354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.04, z: -1.1269531}
-  m_LocalScale: {x: 21.488415, y: 10.198426, z: 1}
+  m_LocalPosition: {x: 2.75, y: 0.01, z: -1.1269531}
+  m_LocalScale: {x: 27.081902, y: 9.939265, z: 3.4631588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -402,8 +415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTime: 2
   spawnDelay: 1
-  enemy: {fileID: 1000010636562108, guid: dd6011ae1d9d96847bb39d396a3a88fb, type: 2}
-  Bullet: {fileID: 50000014128375734, guid: dd6011ae1d9d96847bb39d396a3a88fb, type: 2}
+  enemy: {fileID: 1000013634708356, guid: dd6011ae1d9d96847bb39d396a3a88fb, type: 2}
+  Bullet: {fileID: 50000010720218294, guid: dd6011ae1d9d96847bb39d396a3a88fb, type: 2}
   SpawnPoint1: {fileID: 2128119684}
   SpawnPoint2: {fileID: 1276229553}
   SpawnPoint3: {fileID: 1936533638}
@@ -460,7 +473,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1851668172}
   - 95: {fileID: 1851668173}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
