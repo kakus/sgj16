@@ -25,6 +25,7 @@ public class RunnerAnimationController : MonoBehaviour {
     void Update()
     {
         if(OnGround && Input.GetKeyDown(KeyCode.W) && !Slide)
+        //if (OnGround &&  && !Slide)
         {
             Anim.SetBool("Ground", false);
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, JumpForce));
@@ -34,7 +35,7 @@ public class RunnerAnimationController : MonoBehaviour {
             GetComponent<BoxCollider2D>().isTrigger = true;
             Slide = true;
             Anim.SetBool("Slide", Slide);
-            time = 40;
+            time = 65;
         }
         time--;
         if (time <= 0) {
