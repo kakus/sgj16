@@ -16,15 +16,18 @@ public class NetworkManager : MonoBehaviour
     private void OnMessage(int from, JToken data)
     {
 		Debug.Log("message from player " + from + " data: " + data.ToString());
+        GameStateManager.GetInstance().GetGameState().OnMessage(from, data);
     }
 
     private void OnPlayerConnect(int device_id)
     {
         Debug.Log("Player connected id: " + device_id);
+        GameStateManager.GetInstance().GetGameState().OnPlayerConnected(device_id);
     }
 
     private void OnPlayerDisconnect(int device_id)
     {
         Debug.Log("Player disconnected id: " + device_id);
+        GameStateManager.GetInstance().GetGameState().OnPlayerDisconnected(device_id);
     }
 }

@@ -146,11 +146,11 @@
                 e.preventDefault();
             });
             Key.addEventListener('touchend', function(e) {
-                airconsole.message(AirConsole.SCREEN, { KeyDownUp: { Key: i } });
+                airconsole.message(AirConsole.SCREEN, { KeyUpEvent: { Key: i } });
                 e.preventDefault();
             });
             Key.addEventListener('mouseup', function(e) {
-                airconsole.message(AirConsole.SCREEN, { KeyDownUp: { Key: i } });
+                airconsole.message(AirConsole.SCREEN, { KeyUpEvent: { Key: i } });
                 e.preventDefault();
             });
         });
