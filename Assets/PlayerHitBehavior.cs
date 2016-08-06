@@ -9,16 +9,25 @@ public class PlayerHitBehavior : MonoBehaviour
     public float upwardForce = 10;
     public float forwardForce = 10;
     public GameObject scoreLabel;
-    
+    public GameObject healthLabel;
+
     public AudioSource runningAS;
     public AudioSource hitAS;
     public AudioSource coinAS;
     public AudioSource musicAS;
+    public AudioSource levelFailAS;
+    public AudioSource levelWinAS;
+    private Animator anim;
 
     // Use this for initialization
     void Start()
     {
 
+        /*anim = GetComponentInChildren<Animator>();
+
+        anim.SetFloat("IsWin", 0);
+        anim.SetFloat("IsLost", 0);*/
+        musicAS.Play();
     }
 
     // Update is called once per frame
@@ -26,7 +35,7 @@ public class PlayerHitBehavior : MonoBehaviour
     {
         if (!runningAS.isPlaying)
         {
-            runningAS.Play();
+            runningAS.Play(1);
         }
 
     }
@@ -40,16 +49,32 @@ public class PlayerHitBehavior : MonoBehaviour
 
             randUp *= 0.1f;
             randForward *= 0.1f;
-            if (other.tag == "Obstacle")
+            if ((other.tag == "Obstacle") && ( Time.time- PlayerControl2.lastHitTime>2) &&(Main.score < 100))
             {
                 other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                 //other.gameObject.GetComponent<OutOfBounds>().enabled = false;
 
                 other.gameObject.GetComponent<Rigidbody>().AddForce(((Camera.main.transform.forward + randForward) * forwardForce + (Vector3.up + randUp) * upwardForce), ForceMode.Impulse);
                 other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+                other.gameObject.GetComponent<Collider>().enabled = false;
                 other.gameObject.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-300, 300), Random.Range(-300, 300), Random.Range(-300, 300)), ForceMode.Impulse);
                 
-                hitAS.Play();
+                hitAS.Play(1);
+
+                Main.health -= 1;
+                healthLabel.GetComponent<Text>().text = "" + Main.health.ToString() + "/3";
+                if (Main.health <= 0)
+                {
+                    Application.LoadLevel("End3DLevelScene");
+                    levelFailAS.Play();
+
+                    //anim.SetFloat("IsLost", 1);
+                }
+                else
+                {
+                    PlayerControl2.lastHitTime = Time.time;
+                    
+                }
             }
             if (other.tag == "Medal")
             {
@@ -64,6 +89,13 @@ public class PlayerHitBehavior : MonoBehaviour
                 other.gameObject.transform.parent = Camera.main.transform;
 
                 coinAS.Play();
+
+                if (Main.score == 99)
+                {
+                    levelWinAS.Play();
+
+                    //anim.SetFloat("IsWin", 1);
+                }
                 
 
                 //GameObject scoreLabel = GameObject.FindGameObjectWithTag("ScoreLabel");
