@@ -22,13 +22,13 @@ public class Main : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Random.Range(0,100) < 50) {
+        if (Random.Range(0,100) < 1) {
             //GameObject lgo = Instantiate(obstacleGO, obstacleStartPos.transform.position, Quaternion.identity) as GameObject;
 
-            int posID;
-            posID = (int)Mathf.Round(Random.Range(0, 4));
-            Vector3 pos = new Vector3(Random.Range(1, 5), Random.Range(1, 5), 27);
-            if (posID == 0)
+            //int posID;
+            //posID = (int)Mathf.Round(Random.Range(0, 4));
+            Vector3 pos = new Vector3(Random.Range(0, 3), 0.853333f, 27);
+            /*if (posID == 0)
             {
                 pos.x = 1;
             }
@@ -43,7 +43,9 @@ public class Main : MonoBehaviour {
             if (posID == 3)
             {
                 pos.y = 5;
-            }
+            }*/
+            pos.y = 0.853333f;
+            pos.x = 0.833333f+Mathf.Round(pos.x)*1.66666f;
             GameObject lgo = Instantiate(obstacleGO, pos, Quaternion.identity) as GameObject;
             createdObstacles.Add(lgo);
         }
