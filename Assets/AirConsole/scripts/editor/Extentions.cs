@@ -132,7 +132,7 @@ namespace NDream.AirConsole.Editor {
 
 		public static string GetLocalAddress ()
 		{
-			//return "localhost";
+			return "localhost";
 			
 			string localIP = "";
   
