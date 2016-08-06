@@ -9,10 +9,15 @@ public class PlayerControl2 : MonoBehaviour {
     public bool destMode=true;
     public int trackPos=0;
     public bool wasPressed = false;
+    private Animator anim;
+
 
     // Use this for initialization
     void Start () {
         speed = new Vector3(0, 0, 10000f);
+        anim = GetComponentInChildren<Animator>();
+
+        anim.SetFloat("animSpeed", 0);
         //gameObject.transform.position =new Vector3( Main.tunnelParts[0].transform.position.x + 2.5f, gameObject.transform.position.y, gameObject.transform.position.z);
 	}
 
@@ -27,20 +32,24 @@ public class PlayerControl2 : MonoBehaviour {
             speed.z = 0;
 
         //if ((Input.GetKeyDown(KeyCode.LeftArrow)|| HugoInput.GetInputForPlayer(0).IsButtonPressed(EHugoButton.Key_4) && trackPos>=0) {
-		if (HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_4) && trackPos>=0) {
+        if (HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_4) && trackPos>=0) {
             speed.x = -1.666666f * 100f;
             destMode = true;
             trackPos -= 1;
             destVec.x = Main.tunnelParts[0].transform.position.x + 2.8f +trackPos* 1.6666666f;
-            
+
+            anim.SetFloat("animSpeed", 1);
+
         }
 
         //if (Input.GetKeyDown(KeyCode.RightArrow) && trackPos <= 0) {
-		if (HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_6) && trackPos <= 0) { 
+          if (HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_6) && trackPos <= 0) { 
             destMode = true;
             trackPos += 1;
             destVec.x = Main.tunnelParts[0].transform.position.x + 2.8f  + trackPos * 1.6666666f;
-           
+
+            anim.SetFloat("animSpeed", 1);
+
         }
         if (destMode && (destVec.x<gameObject.transform.position.x))
         {
