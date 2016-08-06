@@ -10,7 +10,6 @@ public enum EGameState
 public class GameStateManager : MonoBehaviour
 {
 	public EGameState StartState;
-	public bool UseAirConsoleInput;
 
 	private static GameStateManager Instance;
 	private AbstractGameState CurrentState;
