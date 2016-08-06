@@ -97,6 +97,8 @@ public class Main : MonoBehaviour {
             pos.x = 0.613333f+Mathf.Round(pos.x)*1.66666f;
             GameObject lgo = Instantiate(obstacleGO, pos, Quaternion.identity) as GameObject;
             createdObstacles.Add(lgo);
+
+
             //lgo.GetComponent<Rigidbody>().velocity = new Vector3(-Main.speed.x, -Main.speed.y, -Main.speed.z);
         }
         else if((15.3f * 3f + refStartPos.z + Mathf.Round((currentPosV.z - refStartPos.z) / 1.66666f) * 1.66666f - lastMedalPosZ > 1.66666)&&
@@ -143,8 +145,20 @@ public class Main : MonoBehaviour {
             {
                 lgo = Instantiate(tunnel2GO, pos2, tunnelParts[2].transform.localRotation) as GameObject;
             }
+
             tunnelParts.Add(lgo);
             tunnelNum += 1;
+            /*for (int i = 0; i < tunnelParts.Count; i++)
+            {
+                Renderer rndr = tunnelParts[i].GetComponentsInChildren<Renderer>()[1];
+                float colorID = Mathf.Round(Random.Range(0.5f,1f));
+                
+                rndr.material.color = new Color(Random.Range(0.2f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+
+                rndr = tunnelParts[i].GetComponentsInChildren<Renderer>()[2];
+                rndr.material.color = new Color(Random.Range(0.5f, 1f), Random.Range(.2f, 1f), Random.Range(0.2f, 1f));
+
+            }*/
 
             refStartPos.x = currentPosV.x;
             refStartPos.y = currentPosV.y;
