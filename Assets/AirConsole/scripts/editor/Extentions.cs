@@ -134,7 +134,8 @@ namespace NDream.AirConsole.Editor {
 		
 			//return "10.78.29.137";
 			//return "172.20.10.2";
-
+			return "localhost";
+			
 			string localIP = "";
   
 			foreach (IPAddress ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList) {
