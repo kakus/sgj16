@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afc3257286313d448110613775e2f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfBottles: 20
+  NumberOfBottles: 5
   speed: -350
   enemy: {fileID: 1000013634708356, guid: dd6011ae1d9d96847bb39d396a3a88fb, type: 2}
   Bullet: {fileID: 50000010720218294, guid: dd6011ae1d9d96847bb39d396a3a88fb, type: 2}

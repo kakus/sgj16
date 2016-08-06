@@ -4,24 +4,25 @@ using UnityEngine.SceneManagement;
 
 public class DeathByCollision : MonoBehaviour {
 
-    public float ToWait = 3f;
+    public float ToWait = 1f;
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (/*col.gameObject.name == "Bullet(Clone)" /*|| */col.gameObject.name == "Character")
+        if (col.gameObject.name == "Bullet(Clone)" /*|| col.gameObject.name == "Character"*/)
         {
             Destroy(col.gameObject);
-            Destroy(gameObject);
-            restartCurrentScene();
-            //StartCoroutine(Wait());
+            // Destroy(gameObject);
+            GetComponent<Renderer>().enabled = false;
+            //restartCurrentScene();
+            StartCoroutine(Wait());
         }
     }
-   /* IEnumerator Wait()
+    IEnumerator Wait()
     {
-        yield return new WaitForSeconds(ToWait);
+        yield return new WaitForSeconds(0);
         restartCurrentScene();
     }
-    */
+    
     public void restartCurrentScene()
     {
         int scene = SceneManager.GetActiveScene().buildIndex;
