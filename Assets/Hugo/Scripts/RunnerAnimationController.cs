@@ -28,7 +28,7 @@ public class RunnerAnimationController : MonoBehaviour {
         CanControl = Anim.GetBool("CanControl");
         if (CanControl)
         {
-            if (OnGround && HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_2) && !Slide)
+            if (OnGround && HugoInput.GetInputForPlayer(1).ButttonJustPressed(EHugoButton.Key_2) && !Slide)
             {
                 OnGround = false;
                 Anim.SetBool("Ground", false);
