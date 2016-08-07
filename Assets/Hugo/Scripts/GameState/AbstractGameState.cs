@@ -12,7 +12,10 @@ public abstract class AbstractGameState
     public virtual void OnMessage(int FromDeviceId, JToken Message)
     {
         int PlayerId = AirConsole.instance.ConvertDeviceIdToPlayerNumber(FromDeviceId);
-        ProcessInput(PlayerId, Message);
+        if (PlayerId == 0 || PlayerId == 1)
+        {
+            ProcessInput(PlayerId, Message);
+        }
     }
 
     public virtual void Update(float DeltaTime)
