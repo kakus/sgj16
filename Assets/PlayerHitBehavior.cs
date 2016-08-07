@@ -96,7 +96,7 @@ public class PlayerHitBehavior : MonoBehaviour
 
                 coinAS.Play();
 
-                if (Main.score == 99)
+                if (Main.score >= 99)
                 {
                     //levelWinAS.Play();
 
