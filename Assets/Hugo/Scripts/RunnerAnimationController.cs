@@ -11,6 +11,7 @@ public class RunnerAnimationController : MonoBehaviour {
     public LayerMask Ground;
     public float JumpForce = 9000f;
     public int time = 0;
+    bool CanControl = true;
     bool Slide = false;
 	// Use this for initialization
 	void Start () {
@@ -24,24 +25,29 @@ public class RunnerAnimationController : MonoBehaviour {
     }
     void Update()
     {
-        if (OnGround && HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_2) && !Slide)
+        CanControl = Anim.GetBool("CanControl");
+        if (CanControl)
         {
-            OnGround = false;
-            Anim.SetBool("Ground", false);
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, JumpForce));
-        }
-        if (OnGround && HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_8))
-        {
-            Slide = true;
-            GetComponent<BoxCollider2D>().isTrigger = true;
-            Anim.SetBool("Slide", Slide);
-            time = 25;
-        }
-        time--;
-        if (time <= 0) {
-            Slide = false;
-            GetComponent<BoxCollider2D>().isTrigger = false;
-            Anim.SetBool("Slide", Slide);
+            if (OnGround && HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_2) && !Slide)
+            {
+                OnGround = false;
+                Anim.SetBool("Ground", false);
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, JumpForce));
+            }
+            if (OnGround && HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_8))
+            {
+                Slide = true;
+                GetComponent<BoxCollider2D>().isTrigger = true;
+                Anim.SetBool("Slide", Slide);
+                time = 30;
+            }
+            time--;
+            if (time <= 0)
+            {
+                Slide = false;
+                GetComponent<BoxCollider2D>().isTrigger = false;
+                Anim.SetBool("Slide", Slide);
+            }
         }
     }
     
