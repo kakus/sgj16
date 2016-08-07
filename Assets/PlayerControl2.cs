@@ -80,7 +80,7 @@ public class PlayerControl2 : MonoBehaviour {
             speed.x = 0;
             speed.z = prevz;
             destMode = false;
-            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, GetComponent<Rigidbody>().velocity.z);
+            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, Mathf.Min(20,GetComponent<Rigidbody>().velocity.z));
         }
 
         //destVec.x = Main.tunnelParts[0].transform.position.x + 2.8f  + trackPos * 1.6666666f;

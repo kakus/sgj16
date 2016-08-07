@@ -11,6 +11,7 @@ public class Main : MonoBehaviour {
     public GameObject explosionGO;
     public GameObject tunnel1GO;
     public GameObject tunnel2GO;
+    public GameObject glowScr;
 
     public GameObject obstacleStartPos;
     public Transform startPos;
@@ -28,6 +29,9 @@ public class Main : MonoBehaviour {
     public static float lastMedalSerieNum=5;
     public static float lastObPosX=0;
     public static float lastTimeCreated;
+    public static float screenShakeStarted=0;
+    public static float cameraSStartX=-1;
+    public static float cameraSStartY = -1;
     public static float tunnelSpeed=40f;
     public GameObject[] predefTunnelParts;
 
@@ -41,9 +45,12 @@ public class Main : MonoBehaviour {
     void Start () {
         score = 0;
         health = 3;
+        screenShakeStarted = -1;
+        cameraSStartX = -1;
+        cameraSStartY = -1;
         //Main.tunnelSpeed = 40;
 
-    lastObPosZ = 0;
+        lastObPosZ = 0;
     outroStartTime = 0;
         lastMedalPosZ = 0;
     lastMedalPosX = 0;
@@ -186,6 +193,33 @@ public class Main : MonoBehaviour {
             }
 
         }
+
+        if (Time.time - screenShakeStarted < .5f)
+        {
+            if (cameraSStartX == -1)
+            {
+                cameraSStartX = gameObject.transform.localPosition.x;
+                cameraSStartY = gameObject.transform.localPosition.y;
+            }
+            gameObject.transform.localPosition = (new Vector3(cameraSStartX - .1f + Random.Range(0, .2f),
+                cameraSStartY - .1f + Random.Range(0, .2f),
+                gameObject.transform.localPosition.z));
+
+        }
+        else if (cameraSStartX != -1)
+        {
+            gameObject.transform.localPosition = new Vector3(cameraSStartX, cameraSStartY, gameObject.transform.localPosition.z);
+            cameraSStartX = -1;
+            cameraSStartY = -1;
+            screenShakeStarted = -1;
+            Renderer rndr = glowScr.GetComponent<Renderer>();
+            Color c = Color.white;
+            c.a = 1;
+
+            rndr.material.color = c;
+        }
+        
+
 
     }
 }

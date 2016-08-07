@@ -10,6 +10,7 @@ public class PlayerHitBehavior : MonoBehaviour
     public float forwardForce = 10;
     public GameObject scoreLabel;
     public GameObject healthLabel;
+    public GameObject glowScr;
 
     public AudioSource runningAS;
     public AudioSource hitAS;
@@ -63,6 +64,14 @@ public class PlayerHitBehavior : MonoBehaviour
 
                 Main.health -= 1;
                 healthLabel.GetComponent<Text>().text = "" + Main.health.ToString() + "/3";
+                Main.screenShakeStarted = Time.time;
+
+                Renderer rndr = glowScr.GetComponent<Renderer>();
+                Color c = Color.white;
+                c.a = 1;
+
+                rndr.material.color = c;
+
                 if (Main.health <= 0)
                 {
                     //Application.LoadLevel("Scene3");
@@ -79,6 +88,7 @@ public class PlayerHitBehavior : MonoBehaviour
                 else
                 {
                     PlayerControl2.lastHitTime = Time.time;
+                    
                     
                 }
             }
