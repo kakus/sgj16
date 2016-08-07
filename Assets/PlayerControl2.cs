@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl2 : MonoBehaviour {
 
@@ -94,7 +95,7 @@ public class PlayerControl2 : MonoBehaviour {
             Renderer rndr = gameObject.GetComponentsInChildren<Renderer>()[1];
 
             Color c = Color.white;
-            c.a = 0.5f * (1+Mathf.Abs(Mathf.Sin((Time.time - lastHitTime)*20)));
+            c.a = 0.5f * (1+Mathf.Sin((Time.time - lastHitTime)*20));
             rndr.material.color = c;
 
         }
@@ -118,10 +119,14 @@ public class PlayerControl2 : MonoBehaviour {
         {
             anim.SetInteger("IsLost", 1);
         }
-        if (Main.outroStartTime>0 && Time.time > Main.outroStartTime)
+        if (Main.outroStartTime > 0 && Time.time > Main.outroStartTime)
         {
-
-            Application.LoadLevel("Scene3b");
+            if (Main.health <= 0) { 
+                int scene = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(scene, LoadSceneMode.Single);
+            }
+            else
+                Application.LoadLevel("FinalScene");
         }
         //GetComponent<Rigidbody>().velocity = speed;
         GetComponent<Rigidbody>().AddForce(speed);

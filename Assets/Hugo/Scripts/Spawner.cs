@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour {
 
@@ -42,6 +43,12 @@ public class Spawner : MonoBehaviour {
         if (NumberOfBottles <= 0)
         {
             CancelInvoke("Spawn");
+            StartCoroutine(NextLevel());
         }
+    }
+    IEnumerator NextLevel()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(2);
     }
 }

@@ -65,12 +65,16 @@ public class PlayerHitBehavior : MonoBehaviour
                 healthLabel.GetComponent<Text>().text = "" + Main.health.ToString() + "/3";
                 if (Main.health <= 0)
                 {
-                    Application.LoadLevel("Scene3");
+                    //Application.LoadLevel("Scene3");
                     //levelFailAS.Play();
 
                     //anim.SetInteger("IsLost", 1);
                     if (Main.outroStartTime == 0)
+                    {
                         Main.outroStartTime = Time.time + 3.0f;
+
+                        GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    }
                 }
                 else
                 {
