@@ -6,6 +6,15 @@ public class LobbyGameState : AbstractGameState
 {
     private int ConnectedPlayers = 0;
 
+    public override void Update(float TimeDelta)
+    {
+        if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.Space))
+        {
+            ConnectedPlayers += 1;
+            GameStateManager.GetInstance().SwitchGameState(EGameState.PLAY_STATE);
+        }
+    }
+
     public override void OnPlayerConnected(int PlayerId)
     {
         ConnectedPlayers += 1;
