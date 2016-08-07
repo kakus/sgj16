@@ -95,7 +95,8 @@ public class PlayerControl2 : MonoBehaviour {
             Renderer rndr = gameObject.GetComponentsInChildren<Renderer>()[1];
 
             Color c = Color.white;
-            c.a = 0.2f+Mathf.Round(0.5f * (1+Mathf.Sin((Time.time - lastHitTime)*20)))*0.8f;
+            //c.a = 0.2f+Mathf.Round(0.5f * (1+Mathf.Sin((Time.time - lastHitTime)*20)))*0.8f;
+            c.a = (Mathf.Round((Time.time - lastHitTime)*10))%2.0f;
             rndr.material.color = c;
 
         }
