@@ -29,6 +29,8 @@ public class PlayerControl2 : MonoBehaviour {
         speed.x = 0;
         speed.y = 0;
 
+        if (Input.GetKeyDown(KeyCode.P)) Application.LoadLevel("FinalScene");
+        
         if (GetComponent<Rigidbody>().velocity.magnitude < 20)
             speed.z = 50f;
         else

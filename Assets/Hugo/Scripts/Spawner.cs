@@ -20,6 +20,11 @@ public class Spawner : MonoBehaviour {
         InvokeRepeating("Spawn", 3, 1.3f);
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P)) SceneManager.LoadScene(2);
+    }
+
     void Spawn()
     {
         NumberOfBottles--;
