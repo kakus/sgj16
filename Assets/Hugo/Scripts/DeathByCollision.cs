@@ -2,9 +2,11 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class DeathByCollision : MonoBehaviour {
+public class DeathByCollision : MonoBehaviour
+{
 
     public float ToWait = 1f;
+    public AudioSource explosionAS;
     Animator Anim;
     void Start()
     {
@@ -21,6 +23,7 @@ public class DeathByCollision : MonoBehaviour {
             Anim.SetBool("CanControl", false);
             SetAllCollidersStatus(false);
             Destroy(col.gameObject);
+            explosionAS.Play();
             StartCoroutine(Wait());
         }
     }
@@ -35,6 +38,8 @@ public class DeathByCollision : MonoBehaviour {
             Anim.SetBool("CanControl", false);
             SetAllCollidersStatus(false);
             Destroy(col.gameObject);
+
+            explosionAS.Play();
             StartCoroutine(Wait());
         }
     }
@@ -50,7 +55,7 @@ public class DeathByCollision : MonoBehaviour {
         yield return new WaitForSeconds(2);
         restartCurrentScene();
     }
-    
+
     public void restartCurrentScene()
     {
         int scene = SceneManager.GetActiveScene().buildIndex;
