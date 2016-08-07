@@ -32,9 +32,14 @@ public interface IVirtualInput
     void UpdateAxisValues(float TimeDelta);
 }
 
+public enum EButtonState
+{
+    Down, DelayUp, Up
+}
+
 public abstract class AbstractVirtualInputState
 {
-    protected Dictionary<EHugoButton, bool> ButtonDown = new Dictionary<EHugoButton, bool>();
+    protected Dictionary<EHugoButton, EButtonState> ButtonState = new Dictionary<EHugoButton, EButtonState>();
     /** how many updates calls was this button pressed */
     protected Dictionary<EHugoButton, int> PressDuration = new Dictionary<EHugoButton, int>();
     protected Dictionary<string, float> AxisValue = new Dictionary<string, float>();
@@ -43,7 +48,7 @@ public abstract class AbstractVirtualInputState
     {
         foreach (EHugoButton Button in Enum.GetValues(typeof(EHugoButton)))
         {
-            ButtonDown[Button] = false;
+            ButtonState[Button] = EButtonState.Up;
             PressDuration[Button] = 0;
         }
 
@@ -53,33 +58,52 @@ public abstract class AbstractVirtualInputState
 
     public void SetButtonDown(EHugoButton Button)
     {
-        ButtonDown[Button] = true;
+        ButtonState[Button] = EButtonState.Down;
     }
 
     public void SetButtonUp(EHugoButton Button)
     {
-        ButtonDown[Button] = false;
+        if (PressDuration[Button] == 0)
+        {
+            ButtonState[Button] = EButtonState.DelayUp;
+        }
+        else
+        {
+            ButtonState[Button] = EButtonState.Up;
+        }
     }
 
     public void UpdateAxisValues(float TimeDelta)
     {
         foreach (EHugoButton Button in Enum.GetValues(typeof(EHugoButton)))
         {
-            if (ButtonDown[Button])
+            switch (ButtonState[Button])
             {
-                PressDuration[Button] += 1;
+                case EButtonState.DelayUp:
+                    if (PressDuration[Button] == 1) {
+                        ButtonState[Button] = EButtonState.Up;
+                        PressDuration[Button] = 0;
+                    }
+                    else PressDuration[Button] += 1;
+                    break;
+
+                case EButtonState.Down:
+                    PressDuration[Button] += 1;
+                    break;
+
+                case EButtonState.Up:
+                    PressDuration[Button] = 0;
+                    break;
+
             }
-            else
-            {
-                PressDuration[Button] = 0;
-            }
+
         }
 
-        if (ButtonDown[EHugoButton.Key_2])
+        if (ButtonState[EHugoButton.Key_2] != EButtonState.Up)
         {
             AxisValue["Vertical"] = Mathf.Clamp(AxisValue["Vertical"] + 1.0f * TimeDelta, -1, 1);
         }
-        else if (ButtonDown[EHugoButton.Key_8])
+        else if (ButtonState[EHugoButton.Key_8] != EButtonState.Up)
         {
             AxisValue["Vertical"] = Mathf.Clamp(AxisValue["Vertical"] - 1.0f * TimeDelta, -1, 1);
         }
@@ -88,11 +112,11 @@ public abstract class AbstractVirtualInputState
             AxisValue["Vertical"] *= 0.95f;
         }
 
-        if (ButtonDown[EHugoButton.Key_4])
+        if (ButtonState[EHugoButton.Key_4] != EButtonState.Up)
         {
             AxisValue["Horizontal"] = Mathf.Clamp(AxisValue["Horizontal"] - 1.0f * TimeDelta, -1, 1);
         }
-        else if (ButtonDown[EHugoButton.Key_6])
+        else if (ButtonState[EHugoButton.Key_6] != EButtonState.Up)
         {
             AxisValue["Horizontal"] = Mathf.Clamp(AxisValue["Horizontal"] + 1.0f * TimeDelta, -1, 1);
         }
@@ -107,9 +131,9 @@ public class PlayerOneVirtualInput : AbstractVirtualInputState, IVirtualInput
 {
     public bool ButttonJustPressed(EHugoButton Button)
     {
-        if (ButtonDown[Button])
+        if (ButtonState[Button] != EButtonState.Up)
         {
-			// was press for one frame
+            // was press for one frame
             return PressDuration[Button] == 1;
         }
         return IsButtonDown(Button);
@@ -127,7 +151,7 @@ public class PlayerOneVirtualInput : AbstractVirtualInputState, IVirtualInput
 
     public bool IsButtonDown(EHugoButton Button)
     {
-        if (ButtonDown[Button])
+        if (ButtonState[Button] != EButtonState.Up)
         {
             return true;
         }
@@ -135,7 +159,7 @@ public class PlayerOneVirtualInput : AbstractVirtualInputState, IVirtualInput
         {
             switch (Button)
             {
-				case EHugoButton.Key_1: return Input.GetKeyDown(KeyCode.Alpha1);
+                case EHugoButton.Key_1: return Input.GetKeyDown(KeyCode.Alpha1);
                 case EHugoButton.Key_4: return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
                 case EHugoButton.Key_6: return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
                 case EHugoButton.Key_2: return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
@@ -151,9 +175,9 @@ public class PlayerTwoVirtualInput : AbstractVirtualInputState, IVirtualInput
 {
     public bool ButttonJustPressed(EHugoButton Button)
     {
-        if (ButtonDown[Button])
+        if (ButtonState[Button] != EButtonState.Up)
         {
-			// was press for one frame
+            // was press for one frame
             return PressDuration[Button] == 1;
         }
         return IsButtonDown(Button);
@@ -171,7 +195,7 @@ public class PlayerTwoVirtualInput : AbstractVirtualInputState, IVirtualInput
 
     public bool IsButtonDown(EHugoButton Button)
     {
-        if (ButtonDown[Button])
+        if (ButtonState[Button] != EButtonState.Up)
         {
             return true;
         }
