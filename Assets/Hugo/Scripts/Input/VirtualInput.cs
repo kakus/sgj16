@@ -18,6 +18,9 @@ public enum EHugoButton
     Key_7,
     Key_8,
     Key_9,
+    Key_star,
+    Key_0,
+    Key_hash,
 }
 
 public interface IVirtualInput
