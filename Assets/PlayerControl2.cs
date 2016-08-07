@@ -49,7 +49,7 @@ public class PlayerControl2 : MonoBehaviour {
         }
 
         //if (Input.GetKeyDown(KeyCode.RightArrow) && trackPos <= 0) {
-          if (HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_6) && trackPos <= 0) { 
+          if (HugoInput.GetInputForPlayer(1).ButttonJustPressed(EHugoButton.Key_6) && trackPos <= 0) { 
             destMode = true;
             trackPos += 1;
             destVec.x = Main.tunnelParts[0].transform.position.x + 2.8f  + trackPos * 1.6666666f;
