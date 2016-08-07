@@ -27,7 +27,7 @@ public class TweenPos : MonoBehaviour {
 
                 if (Main.score >= 100)
                 {
-                    Application.LoadLevel("End3DLevelScene");
+                   // Application.LoadLevel("Fin");
                 }
             }
         }

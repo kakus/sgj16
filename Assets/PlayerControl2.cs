@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl2 : MonoBehaviour {
 
@@ -28,13 +29,16 @@ public class PlayerControl2 : MonoBehaviour {
         speed.x = 0;
         speed.y = 0;
 
-            if (GetComponent<Rigidbody>().velocity.magnitude < 20)
+        if (GetComponent<Rigidbody>().velocity.magnitude < 20)
             speed.z = 50f;
         else
             speed.z = 0;
 
+        if (Main.outroStartTime > 0)
+            speed.z=0;
+
         //if ((Input.GetKeyDown(KeyCode.LeftArrow)|| HugoInput.GetInputForPlayer(0).IsButtonPressed(EHugoButton.Key_4) && trackPos>=0) {
-        if (HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_4) && trackPos>=0) {
+            if (HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_4) && trackPos>=0) {
             speed.x = -1.666666f * 100f;
             destMode = true;
             trackPos -= 1;
@@ -91,7 +95,7 @@ public class PlayerControl2 : MonoBehaviour {
             Renderer rndr = gameObject.GetComponentsInChildren<Renderer>()[1];
 
             Color c = Color.white;
-            c.a = 0.5f * (1+Mathf.Abs(Mathf.Sin((Time.time - lastHitTime)*20)));
+            c.a = 0.5f * (1+Mathf.Sin((Time.time - lastHitTime)*20));
             rndr.material.color = c;
 
         }
@@ -102,6 +106,27 @@ public class PlayerControl2 : MonoBehaviour {
             Color c = Color.white;
             c.a = 1;
             rndr.material.color = c;
+        }
+
+        if (Main.score >= 100)
+        {
+            //levelWinAS.Play();
+
+            anim.SetInteger("IsWin", 1);
+        }
+
+        else if (Main.health <= 0)
+        {
+            anim.SetInteger("IsLost", 1);
+        }
+        if (Main.outroStartTime > 0 && Time.time > Main.outroStartTime)
+        {
+            if (Main.health <= 0) { 
+                int scene = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(scene, LoadSceneMode.Single);
+            }
+            else
+                Application.LoadLevel("FinalScene");
         }
         //GetComponent<Rigidbody>().velocity = speed;
         GetComponent<Rigidbody>().AddForce(speed);

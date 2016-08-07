@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 217bef4dc68e7024cab3ebf18485cf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToWait: 3
+  ToWait: 1
 --- !u!114 &114000013490561578
 MonoBehaviour:
   m_ObjectHideFlags: 1

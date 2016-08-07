@@ -22,6 +22,7 @@ public class Main : MonoBehaviour {
     public static int score = 0;
     public static int health = 0;
     public static float lastObPosZ=0;
+    public static float outroStartTime=0;
     public static float lastMedalPosZ=0;
     public static float lastMedalPosX=0;
     public static float lastMedalSerieNum=5;
@@ -43,7 +44,8 @@ public class Main : MonoBehaviour {
         //Main.tunnelSpeed = 40;
 
     lastObPosZ = 0;
-    lastMedalPosZ = 0;
+    outroStartTime = 0;
+        lastMedalPosZ = 0;
     lastMedalPosX = 0;
     lastMedalSerieNum = 5;
     lastObPosX = 0;
