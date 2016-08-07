@@ -10,7 +10,7 @@ public class LobbyGameState : AbstractGameState
     {
         if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.Space))
         {
-            ConnectedPlayers += 1;
+            ConnectedPlayers += 2;
             GameStateManager.GetInstance().SwitchGameState(EGameState.PLAY_STATE);
         }
     }
@@ -19,7 +19,7 @@ public class LobbyGameState : AbstractGameState
     {
         ConnectedPlayers += 1;
 
-        if (ConnectedPlayers == 1)
+        if (ConnectedPlayers == 2)
         {
             GameStateManager.GetInstance().SwitchGameState(EGameState.PLAY_STATE);
         }
@@ -33,11 +33,11 @@ public class LobbyGameState : AbstractGameState
 
     public override void Shutdown()
     {
-        if (ConnectedPlayers != 1)
+        if (ConnectedPlayers != 2)
         {
             throw new System.Exception("Not enough players to playe the game!");
         }
-        AirConsole.instance.SetActivePlayers(1);
+        AirConsole.instance.SetActivePlayers(2);
     }
 
 }
