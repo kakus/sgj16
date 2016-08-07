@@ -11,7 +11,7 @@ public class LevelEnded : MonoBehaviour {
     private float startTime = 0;
 
     void Start () {
-	    if(Main.score>=100 && Main.health>0)
+	    if(Main.score>=50 && Main.health>0)
         {
             label.GetComponent<Text>().text = "Level Completed! \n Press \"1\" To Coninue";
 
@@ -28,7 +28,7 @@ public class LevelEnded : MonoBehaviour {
     {
         if (HugoInput.GetInputForPlayer(0).ButttonJustPressed(EHugoButton.Key_4))
         {
-            if (Main.score >= 100 && Main.health > 0)
+            if (Main.score >= 50 && Main.health > 0)
             {
 
                 Application.LoadLevel("Scene2");

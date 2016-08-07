@@ -109,7 +109,7 @@ public class PlayerControl2 : MonoBehaviour {
             rndr.material.color = c;
         }
 
-        if (Main.score >= 100)
+        if (Main.score >= 50)
         {
             //levelWinAS.Play();
 

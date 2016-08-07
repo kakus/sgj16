@@ -50,7 +50,7 @@ public class PlayerHitBehavior : MonoBehaviour
 
             randUp *= 0.1f;
             randForward *= 0.1f;
-            if ((other.tag == "Obstacle") && ( Time.time- PlayerControl2.lastHitTime>2) &&(Main.score < 100))
+            if ((other.tag == "Obstacle") && ( Time.time- PlayerControl2.lastHitTime>2) &&(Main.score < 50))
             {
                 other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                 //other.gameObject.GetComponent<OutOfBounds>().enabled = false;
@@ -106,7 +106,7 @@ public class PlayerHitBehavior : MonoBehaviour
 
                 coinAS.Play();
 
-                if (Main.score >= 99)
+                if (Main.score >= 49)
                 {
                     //levelWinAS.Play();
 

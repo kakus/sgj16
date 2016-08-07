@@ -20,12 +20,12 @@ public class TweenPos : MonoBehaviour {
             //if (gameObject.tag=="Medal")
             {
                 Main.score += 1;
-                scoreLabel.GetComponent<Text>().text = "" + Main.score.ToString()+"/100";
+                scoreLabel.GetComponent<Text>().text = "" + Main.score.ToString()+"/50";
 
                 Main.createdMedals.Remove(gameObject);
                 Destroy(gameObject);
 
-                if (Main.score >= 100)
+                if (Main.score >= 50)
                 {
                    // Application.LoadLevel("Fin");
                 }
