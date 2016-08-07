@@ -1,12 +1,11 @@
 using System;
-using Newtonsoft.Json.Linq;
-using NDream.AirConsole;
+
 
 public class PlayState : AbstractGameState
 {
     public override void OnPlayerConnected(int DeviceId)
     {
-        AirConsole.instance.Message(DeviceId, new { Error = "TooManyPlayers" });
+        // AirConsole.instance.Message(DeviceId, new { Error = "TooManyPlayers" });
     }
 
     public override void OnPlayerDisconnected(int DeviceId)

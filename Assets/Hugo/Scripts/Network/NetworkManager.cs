@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using NDream.AirConsole;
-using System;
-using Newtonsoft.Json.Linq;
+// using NDream.AirConsole;
+// using System;
+// using Newtonsoft.Json.Linq;
 
 public class NetworkManager : MonoBehaviour
 {
@@ -10,19 +10,19 @@ public class NetworkManager : MonoBehaviour
 
     void Start()
     {
-        AirConsole.instance.onConnect += OnPlayerConnect;
-        AirConsole.instance.onDisconnect += OnPlayerDisconnect;
-		AirConsole.instance.onMessage += OnMessage;
+        // AirConsole.instance.onConnect += OnPlayerConnect;
+        // AirConsole.instance.onDisconnect += OnPlayerDisconnect;
+		// AirConsole.instance.onMessage += OnMessage;
 
         AudioSource = GetComponent<AudioSource>();
     }
 
-    private void OnMessage(int from, JToken data)
-    {
-		Debug.Log("message from player " + from + " data: " + data.ToString());
-        GameStateManager.GetInstance().GetGameState().OnMessage(from, data);
-        AudioSource.Play();
-    }
+    // private void OnMessage(int from, JToken data)
+    // {
+	// 	Debug.Log("message from player " + from + " data: " + data.ToString());
+    //     GameStateManager.GetInstance().GetGameState().OnMessage(from, data);
+    //     AudioSource.Play();
+    // }
 
     private void OnPlayerConnect(int device_id)
     {

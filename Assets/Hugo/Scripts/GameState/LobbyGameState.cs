@@ -1,6 +1,4 @@
-using System;
-using Newtonsoft.Json.Linq;
-using NDream.AirConsole;
+
 
 public class LobbyGameState : AbstractGameState
 {
@@ -37,7 +35,7 @@ public class LobbyGameState : AbstractGameState
         {
             throw new System.Exception("Not enough players to playe the game!");
         }
-        AirConsole.instance.SetActivePlayers(1);
+        // AirConsole.instance.SetActivePlayers(1);
     }
 
 }
