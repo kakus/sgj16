@@ -21,7 +21,11 @@ public class NetworkManager : MonoBehaviour
     {
 		Debug.Log("message from player " + from + " data: " + data.ToString());
         GameStateManager.GetInstance().GetGameState().OnMessage(from, data);
-        AudioSource.Play();
+        
+        if (data["KeyDownEvent"] != null)
+        {
+            AudioSource.Play();
+        }
     }
 
     private void OnPlayerConnect(int device_id)
