@@ -1,0 +1,368 @@
+From f9f66fbd7fc7440148b155118b10ac88d70832e3 Mon Sep 17 00:00:00 2001
+From: Karol Furmann <karol.furmann@gmail.com>
+Date: Sun, 7 Aug 2016 09:50:53 +0200
+Subject: [PATCH] rtdy
+
+---
+ .../Assets/Temporary Assets/Sprites/A1.controller  |   4 +-
+ Assets/Hugo/Assets/glowscr.png                     | Bin 0 -> 2000 bytes
+ Assets/Hugo/Assets/glowscr.png.meta                |  59 +++++++++++++++++
+ Assets/Hugo/Scenes/Scene1.unity                    |  70 +++++++++++++++++++++
+ Assets/Main.cs                                     |  36 ++++++++++-
+ Assets/PlayerControl2.cs                           |   2 +-
+ Assets/PlayerHitBehavior.cs                        |  10 +++
+ 7 files changed, 177 insertions(+), 4 deletions(-)
+ create mode 100644 Assets/Hugo/Assets/glowscr.png
+ create mode 100644 Assets/Hugo/Assets/glowscr.png.meta
+
+diff --git a/Assets/Hugo/Assets/Temporary Assets/Sprites/A1.controller b/Assets/Hugo/Assets/Temporary Assets/Sprites/A1.controller
+index 3b4e9b8..5b79119 100644
+--- a/Assets/Hugo/Assets/Temporary Assets/Sprites/A1.controller	
++++ b/Assets/Hugo/Assets/Temporary Assets/Sprites/A1.controller	
+@@ -154,9 +154,9 @@ AnimatorStateTransition:
+   m_Mute: 0
+   m_IsExit: 0
+   serializedVersion: 3
+-  m_TransitionDuration: 0.25
++  m_TransitionDuration: 0.010539219
+   m_TransitionOffset: 0
+-  m_ExitTime: 0.46428573
++  m_ExitTime: 0.46428576
+   m_HasExitTime: 1
+   m_HasFixedDuration: 1
+   m_InterruptionSource: 0
+diff --git a/Assets/Hugo/Assets/glowscr.png b/Assets/Hugo/Assets/glowscr.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..02f07bef06867cfcb35d9df7c23c8c51052baffb
+GIT binary patch
+literal 2000
+zcmV;>2QT=EP)<h;3K|Lk000e1NJLTq002Ay002A)1^@s6I{evk00006VoOIv0RI60
+z0RN!9r;`8x010qNS#tmY3ljhU3ljkVnw%H_000McNliru;0Ol?Cm@s4MsffE2VF@-
+zK~!kom0MeqBR34A9y6N@=WMxJYNsXUBik+v3{X8&<!XCvw*~P9g4*^^#NQE-;<4lZ
+zzx(z5*Wii|e2?$7{@jlr0iRd*>-0XZL#?6x`Hp(tBBD(L6t7PJcUlPE>wYlkpKN5%
+zXH#s<y^apAlirJIfU1S1Sx^_&3cA+<z^eevmI<=#hS$m)@G;;w#{JzXth)?owX<m5
+z28&VFy~w?tdv@^~DK@i-?;+Uz=Q?mhrirzaH9`RG##=73@-hqWChkH2cHbS~aU<UU
+zUKZZMrP&Sn2Rp@H2yeknyAJU?DE>HxH+c|S8LgVmgQkc#w#Fi>g}4#Nt@D;73kT%^
+zbjc<%bBfAwe~!V*#5QU1yRdMY1hxyyGRS4}!3}bPr8;H*G*yFhiA#j*X<1q(fi2@5
+zocI=P80Ucw7EWQQCV-~#uz<BS`2E-YXHn-|J>4SaZ$KA$27>2%ce3uF&kXW{G)Zg2
+zH2~ZeM$8${{}edR!k0->s)k~$a()<sxwXPD6+!v-dLC$67zTx)E&zJb25do7F>V)F
+zQZcTJNQB#jP&86mZ5CX#7bJkeehKhg&J<Y~hRr3cFAQI=s3o(nhILqxhXFhkpDz*H
+z2>MIJu%nROyr;<jqEe+kuX4g0k(p)z%tbeO0lM}g>tg&?JUmSdHnFBj><K-@@#q0$
+z=CuLSbUjQY?k`=YW;;ezac11mi^>SDX;Q*t%MNiJ0`!YZ$6=SbL8$2CrcAyIl7Qhc
+z0caPX8*$_m4MP_I2e*vV)Kzx3G?qWr=rkl@Q<mPyhQLiPGQhnt$}<_<q<?=Ut;;O<
+zj?XVaHMeLwQnZq3_;&#4O(5B=m78~y8;0QG-^$dCh~I`rx>~yg_-YfP0Ig^(0=-QC
+zjg+yv{~K$(0k0wnEhsy`sq|dJ>Wby4hJir_S#r^px$$kuMWN!vh#nDpM#R5`$cCW5
+z=&=rNoT33hazBi8vyD3s!QU@Ra-1s$H6;B8TnTLp;`|F()fdsoO88^oya8ME#VMXA
+zbwBr-l#Yhk{6(J7rI(3AcHb}K%1YMVCZ2*^ldYSk{B2RTlsvqtbS2i|-v!vDBz4jC
+zNgL=ANh@4>8xoY1-Iq~F*}C_4=7h4dje1dK>s`2Sm}Z?pFQG#@(xS4tvg)RAcv0mk
+z7M@1Xds>1{nim4+7!7z`CBZG)z<Vu|7~BOLI%Y9x*gw>(qlniy2!QOuX*QI-V38FA
+z*jb96_?xDs7FTTo&!D2n(9ZIw7<HTAHZFyxg(Xgkcv(oIm5Wti-G;Wpstv5zfLn79
+zzo>h1nLeIsT6wsJXx&^AQ}1<3R0!gtMq+^GmDJ>O9$3V=e=Op)LNLn*&BBvdSD>9t
+z#OmiZLf@OF^%Q8RBw&<`Q~f=;HcPK=-P}~9(ZJp$o@!yOm<jKLJem))cAC*>6pChu
+z!Fdz|^N5JnjigzDRf@<HV9gK{m9h5^_<$RbD{-&)VtU@i?A6V0n~CvwP@dwD*>@o+
+zrEzUu^FS^=h>nG*gG|x5Bk2!aHV&>=aqewc8;@K^rCiR4_%N>0s2rrYCdG0)l&WSJ
+zP?Z$3U}*?+(iCz6;EBz{XCc`vGo4V(s1vh^!$O_=w<33hh|>Y0-Tn9=;1dOaPjk!x
+zg*!ENNzu-AlT}lcjW7pOs<BTu+Vh0#4fccnz27eVmpNs#z@1S}X(E$yJ63Vtb~vWQ
+zpq;?p36Q$t^Ebfi0Lmn=myuf?AKxaPBhH7(ly%vXQ@HIA8uhoN^~(&jac0zu7|!B2
+zM5D$$1Tz{!P;X|kfH8`XDGtS`@oB>t-r&BAG+}pOEDEqoWLkB$DqyiqObdp{zMo{_
+zLHDp;bbkS}Z95SCJV-gsObPQa=A2|<m!zC^TT$-52>_$0jjZkB81=(g7F}>1DButy
+zk|EA*bx~#}xw1Q-`E9eO8Dn(g&I7cf8?+j9E5Ld9EVClEHfP~!+!zz)P@|To#6S(H
+z-4J^iDOcT#0X1W3Rc2<PPg@H=Y53i|SWVz@Vb$@)E^6%*7FPG=6MIoGGb;eJ!vU9V
+z*iwg#&X&E3GavnjuHAt}jpDRUdG2}|V!%fVSbO3FVVz3bE~XVcWE*C-%Ov7cSX~MG
+zRXh7qJkkuD5$vS17<>d_gG8D%P`|+XYNF7^LnSM8=~jsRwzr=}r-DBi5QAHcBP0At
+z_z9qU=mX-4VouQkP2tY&Sd^lfZJKP{3*x_{KGn*H!`<PwWyngEte8<nL29JOR2J?J
+z09O-$ZDOs_I3y2et)}RLdic}w9LLhatV*!N)66Wm0-ORcpQB8XKNQdpaO?g9z)c-n
+za-^f1o8&=x#6g!kyu#jst~f<k#4cU^7at`i*rcUommdD0b{Nen<NaixI%33eJcM$=
+z!23hM&9#RomX(Jt$+`4RNIuL0woppB3~@&^L{50h5~BiKDUfcstyGXneQ_hfZxLxw
+i(#;gD<4GvAa?*b(`aU-9w~sjh0000<MNUMnLSTXqg2Chf
+
+literal 0
+HcmV?d00001
+
+diff --git a/Assets/Hugo/Assets/glowscr.png.meta b/Assets/Hugo/Assets/glowscr.png.meta
+new file mode 100644
+index 0000000..76d50c0
+--- /dev/null
++++ b/Assets/Hugo/Assets/glowscr.png.meta
+@@ -0,0 +1,59 @@
++fileFormatVersion: 2
++guid: 7cfd3cd7c563a8c4e99525198acd9e41
++timeCreated: 1470555536
++licenseType: Free
++TextureImporter:
++  fileIDToRecycleName: {}
++  serializedVersion: 2
++  mipmaps:
++    mipMapMode: 0
++    enableMipMap: 1
++    linearTexture: 0
++    correctGamma: 0
++    fadeOut: 0
++    borderMipMap: 0
++    mipMapFadeDistanceStart: 1
++    mipMapFadeDistanceEnd: 3
++  bumpmap:
++    convertToNormalMap: 0
++    externalNormalMap: 0
++    heightScale: 0.25
++    normalMapFilter: 0
++  isReadable: 0
++  grayScaleToAlpha: 0
++  generateCubemap: 0
++  cubemapConvolution: 0
++  cubemapConvolutionSteps: 7
++  cubemapConvolutionExponent: 1.5
++  seamlessCubemap: 0
++  textureFormat: -1
++  maxTextureSize: 2048
++  textureSettings:
++    filterMode: -1
++    aniso: -1
++    mipBias: -1
++    wrapMode: 1
++  nPOTScale: 0
++  lightmap: 0
++  rGBM: 0
++  compressionQuality: 50
++  allowsAlphaSplitting: 0
++  spriteMode: 1
++  spriteExtrude: 1
++  spriteMeshType: 1
++  alignment: 0
++  spritePivot: {x: 0.5, y: 0.5}
++  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
++  spritePixelsToUnits: 100
++  alphaIsTransparency: 1
++  spriteTessellationDetail: -1
++  textureType: 8
++  buildTargetSettings: []
++  spriteSheet:
++    serializedVersion: 2
++    sprites: []
++    outline: []
++  spritePackingTag: 
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Hugo/Scenes/Scene1.unity b/Assets/Hugo/Scenes/Scene1.unity
+index 891a7bc..8bdfe1e 100644
+--- a/Assets/Hugo/Scenes/Scene1.unity
++++ b/Assets/Hugo/Scenes/Scene1.unity
+@@ -996,6 +996,7 @@ MonoBehaviour:
+   forwardForce: 10
+   scoreLabel: {fileID: 81028111}
+   healthLabel: {fileID: 1012576796}
++  glowScr: {fileID: 0}
+   runningAS: {fileID: 1643290420}
+   hitAS: {fileID: 1622105219}
+   coinAS: {fileID: 79075933}
+@@ -1135,6 +1136,7 @@ MonoBehaviour:
+     type: 2}
+   tunnel1GO: {fileID: 1000013936999926, guid: ea91b0ea4fce5744b966a4102802a55f, type: 2}
+   tunnel2GO: {fileID: 1000013622685354, guid: 46d664ab207594541b46316a8885a8db, type: 2}
++  glowScr: {fileID: 1120441722}
+   obstacleStartPos: {fileID: 28556518}
+   startPos: {fileID: 1900362032}
+   currentPosT: {fileID: 765469532}
+@@ -1332,6 +1334,73 @@ MonoBehaviour:
+   destMode: 0
+   trackPos: 0
+   wasPressed: 0
++--- !u!1 &1120441722
++GameObject:
++  m_ObjectHideFlags: 0
++  m_PrefabParentObject: {fileID: 0}
++  m_PrefabInternal: {fileID: 0}
++  serializedVersion: 4
++  m_Component:
++  - 224: {fileID: 1120441723}
++  - 222: {fileID: 1120441725}
++  - 114: {fileID: 1120441724}
++  m_Layer: 0
++  m_Name: RawImage (2)
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &1120441723
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_PrefabParentObject: {fileID: 0}
++  m_PrefabInternal: {fileID: 0}
++  m_GameObject: {fileID: 1120441722}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_Children: []
++  m_Father: {fileID: 1876208968}
++  m_RootOrder: 4
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 1, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &1120441724
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_PrefabParentObject: {fileID: 0}
++  m_PrefabInternal: {fileID: 0}
++  m_GameObject: {fileID: 1120441722}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: -98529514, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_Material: {fileID: 0}
++  m_Color: {r: 1, g: 1, b: 1, a: 1}
++  m_RaycastTarget: 1
++  m_OnCullStateChanged:
++    m_PersistentCalls:
++      m_Calls: []
++    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
++      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
++  m_Texture: {fileID: 2800000, guid: 7cfd3cd7c563a8c4e99525198acd9e41, type: 3}
++  m_UVRect:
++    serializedVersion: 2
++    x: 0
++    y: 0
++    width: 1
++    height: 1
++--- !u!222 &1120441725
++CanvasRenderer:
++  m_ObjectHideFlags: 0
++  m_PrefabParentObject: {fileID: 0}
++  m_PrefabInternal: {fileID: 0}
++  m_GameObject: {fileID: 1120441722}
+ --- !u!1 &1157444318
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -2079,6 +2148,7 @@ RectTransform:
+   - {fileID: 1869340767}
+   - {fileID: 681480348}
+   - {fileID: 1012576797}
++  - {fileID: 1120441723}
+   m_Father: {fileID: 0}
+   m_RootOrder: 8
+   m_AnchorMin: {x: 0, y: 0}
+diff --git a/Assets/Main.cs b/Assets/Main.cs
+index d59b7e2..89a3841 100644
+--- a/Assets/Main.cs
++++ b/Assets/Main.cs
+@@ -11,6 +11,7 @@ public class Main : MonoBehaviour {
+     public GameObject explosionGO;
+     public GameObject tunnel1GO;
+     public GameObject tunnel2GO;
++    public GameObject glowScr;
+ 
+     public GameObject obstacleStartPos;
+     public Transform startPos;
+@@ -28,6 +29,9 @@ public class Main : MonoBehaviour {
+     public static float lastMedalSerieNum=5;
+     public static float lastObPosX=0;
+     public static float lastTimeCreated;
++    public static float screenShakeStarted=0;
++    public static float cameraSStartX=-1;
++    public static float cameraSStartY = -1;
+     public static float tunnelSpeed=40f;
+     public GameObject[] predefTunnelParts;
+ 
+@@ -41,9 +45,12 @@ public class Main : MonoBehaviour {
+     void Start () {
+         score = 0;
+         health = 3;
++        screenShakeStarted = -1;
++        cameraSStartX = -1;
++        cameraSStartY = -1;
+         //Main.tunnelSpeed = 40;
+ 
+-    lastObPosZ = 0;
++        lastObPosZ = 0;
+     outroStartTime = 0;
+         lastMedalPosZ = 0;
+     lastMedalPosX = 0;
+@@ -187,5 +194,32 @@ public class Main : MonoBehaviour {
+ 
+         }
+ 
++        if (Time.time - screenShakeStarted < .5f)
++        {
++            if (cameraSStartX == -1)
++            {
++                cameraSStartX = gameObject.transform.localPosition.x;
++                cameraSStartY = gameObject.transform.localPosition.y;
++            }
++            gameObject.transform.localPosition = (new Vector3(cameraSStartX - .1f + Random.Range(0, .2f),
++                cameraSStartY - .1f + Random.Range(0, .2f),
++                gameObject.transform.localPosition.z));
++
++        }
++        else if (cameraSStartX != -1)
++        {
++            gameObject.transform.localPosition = new Vector3(cameraSStartX, cameraSStartY, gameObject.transform.localPosition.z);
++            cameraSStartX = -1;
++            cameraSStartY = -1;
++            screenShakeStarted = -1;
++            Renderer rndr = glowScr.GetComponent<Renderer>();
++            Color c = Color.white;
++            c.a = 1;
++
++            rndr.material.color = c;
++        }
++        
++
++
+     }
+ }
+diff --git a/Assets/PlayerControl2.cs b/Assets/PlayerControl2.cs
+index a832333..18d8f04 100644
+--- a/Assets/PlayerControl2.cs
++++ b/Assets/PlayerControl2.cs
+@@ -80,7 +80,7 @@ public class PlayerControl2 : MonoBehaviour {
+             speed.x = 0;
+             speed.z = prevz;
+             destMode = false;
+-            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, GetComponent<Rigidbody>().velocity.z);
++            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, Mathf.Min(20,GetComponent<Rigidbody>().velocity.z));
+         }
+ 
+         //destVec.x = Main.tunnelParts[0].transform.position.x + 2.8f  + trackPos * 1.6666666f;
+diff --git a/Assets/PlayerHitBehavior.cs b/Assets/PlayerHitBehavior.cs
+index 6bef4c4..cc1142f 100644
+--- a/Assets/PlayerHitBehavior.cs
++++ b/Assets/PlayerHitBehavior.cs
+@@ -10,6 +10,7 @@ public class PlayerHitBehavior : MonoBehaviour
+     public float forwardForce = 10;
+     public GameObject scoreLabel;
+     public GameObject healthLabel;
++    public GameObject glowScr;
+ 
+     public AudioSource runningAS;
+     public AudioSource hitAS;
+@@ -63,6 +64,14 @@ public class PlayerHitBehavior : MonoBehaviour
+ 
+                 Main.health -= 1;
+                 healthLabel.GetComponent<Text>().text = "" + Main.health.ToString() + "/3";
++                Main.screenShakeStarted = Time.time;
++
++                Renderer rndr = glowScr.GetComponent<Renderer>();
++                Color c = Color.white;
++                c.a = 1;
++
++                rndr.material.color = c;
++
+                 if (Main.health <= 0)
+                 {
+                     //Application.LoadLevel("Scene3");
+@@ -80,6 +89,7 @@ public class PlayerHitBehavior : MonoBehaviour
+                 {
+                     PlayerControl2.lastHitTime = Time.time;
+                     
++                    
+                 }
+             }
+             if (other.tag == "Medal")
+-- 
+2.9.2.windows.1
+

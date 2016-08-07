@@ -72,6 +72,11 @@ public class Main : MonoBehaviour {
         lastTimeCreated = Time.time;
 
 
+        /*RawImage rndr = glowScr.GetComponent<RawImage>();
+        Color c = Color.white;
+        c.a = 0;
+
+        rndr.material.color = c;*/
         /*currentPos.x = refStartPos.x;
         currentPos.y = refStartPos.y;
         currentPos.z = refStartPos.z;*/
@@ -212,11 +217,11 @@ public class Main : MonoBehaviour {
             cameraSStartX = -1;
             cameraSStartY = -1;
             screenShakeStarted = -1;
-            Renderer rndr = glowScr.GetComponent<Renderer>();
+            /*RawImage rndr = glowScr.GetComponent<RawImage>();
             Color c = Color.white;
-            c.a = 1;
-
-            rndr.material.color = c;
+            c.a = 0;
+            rndr.color = c;*/
+            //rndr.material.color = c;
         }
         
 

@@ -66,11 +66,11 @@ public class PlayerHitBehavior : MonoBehaviour
                 healthLabel.GetComponent<Text>().text = "" + Main.health.ToString() + "/3";
                 Main.screenShakeStarted = Time.time;
 
-                Renderer rndr = glowScr.GetComponent<Renderer>();
+               /* RawImage rndr = glowScr.GetComponent<RawImage>();
                 Color c = Color.white;
                 c.a = 1;
 
-                rndr.material.color = c;
+                rndr.color = c;*/
 
                 if (Main.health <= 0)
                 {
