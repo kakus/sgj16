@@ -731,6 +731,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1851668172}
   - 95: {fileID: 1851668173}
+  - 58: {fileID: 1851668174}
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -768,6 +769,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!58 &1851668174
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851668171}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.02
 --- !u!1 &1874482215
 GameObject:
   m_ObjectHideFlags: 0
